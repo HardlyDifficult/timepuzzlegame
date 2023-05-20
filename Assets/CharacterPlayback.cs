@@ -13,12 +13,12 @@ public class CharacterPlayback : MonoBehaviour
         config = FindObjectOfType<Config>();
         rb = GetComponent<Rigidbody>();
 
-        index = positions.Count - config.flashbackLength;
+        index = positions.Count - 1;
     }
 
     void FixedUpdate()
     {
-        index++;
+        index += config.timeStep;
         if(index >= positions.Count || index < 0) {
             GetComponent<Renderer>().enabled = false;
             return;

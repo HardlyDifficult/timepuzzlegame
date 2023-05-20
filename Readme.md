@@ -17,6 +17,7 @@ Effects:
   - maybe go back in time while standing in platform, push button to initiate a clone at that time.
   - not possible to clone if there is a clone already at that position
   - alt: start/end record pads
+  - could render the past self paths to help coordinate actions
 
 Visuals:
 

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Config : MonoBehaviour
 {
-   public int flashbackLength = 200;
+   public int timeStep = 1;
 }

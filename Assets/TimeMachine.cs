@@ -12,18 +12,19 @@ public class TimeMachine : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
+        config.timeStep = -1;
+
         CharacterRecorder recorder = other.GetComponent<CharacterRecorder>();
         if(!recorder) {
             return;
         }
 
-        var pastMes = FindObjectsOfType<CharacterPlayback>();
-        foreach(var r in pastMes) {
-            r.index -= config.flashbackLength;
-        }
-
         GameObject dupe = Instantiate(pastCharacter);
         CharacterPlayback playback = dupe.GetComponent<CharacterPlayback>();
         playback.positions = new List<Vector3>(recorder.positions);
+    }
+
+    void OnTriggerExit() {
+        config.timeStep = 1;
     }
 }
