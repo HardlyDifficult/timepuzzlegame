@@ -10,6 +10,8 @@ Possible mechanics:
   - Reverse time direction of individual clones
 - Door keys or tools. maybe a clone needs to self sacrifice to get the item to the other clone
 - Clone degrade? slower, smaller, less health, etc.
+- Camera: 1st person? 3rd person? top down?
+- Story/ character?
 
 Effects:
 
