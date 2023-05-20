@@ -12,6 +12,7 @@ public class TimeMachine : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
+        Debug.Log("TimeMachine OnTriggerEnter");
         config.timeStep = -1;
 
         CharacterRecorder recorder = other.GetComponent<CharacterRecorder>();

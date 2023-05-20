@@ -27,6 +27,7 @@ public class CharacterPlayback : MonoBehaviour
         GetComponent<Renderer>().enabled = true;
 
         Vector3 position = positions[index];
-        rb.MovePosition(position);
+        // rb.MovePosition(position);
+        transform.position = position;
     }
 }

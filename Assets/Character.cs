@@ -7,20 +7,23 @@ public class Character : MonoBehaviour
 {
 
     public float moveSpeed = 5f;
+    public float acceleration = 0.01f;
 
     Vector2 moveDirection;
+    Vector2 moveVelocity;
 
-    Rigidbody rb;
+    CharacterController controller;
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        controller = GetComponent<CharacterController>();
     }
 
     void FixedUpdate()
-    {
-        
-        rb.MovePosition(transform.position + new Vector3(moveDirection.x, 0, moveDirection.y) * Time.fixedDeltaTime * moveSpeed);
+    {   
+        // moveVelocity += (moveDirection * moveSpeed - moveVelocity) * Time.fixedDeltaTime * acceleration;
+        moveVelocity = Vector2.Lerp(moveVelocity, moveDirection * moveSpeed, acceleration * Time.fixedDeltaTime);
+        controller.SimpleMove(new Vector3(moveVelocity.x, 0, moveVelocity.y) * Time.fixedDeltaTime);
     }
 
     void OnWASD(InputValue value)
