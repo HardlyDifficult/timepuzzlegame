@@ -21,7 +21,6 @@ public class Character : MonoBehaviour
     {
         
         rb.MovePosition(transform.position + new Vector3(moveDirection.x, 0, moveDirection.y) * Time.fixedDeltaTime * moveSpeed);
-        rb.velocity = Vector3.zero;
     }
 
     void OnWASD(InputValue value)
