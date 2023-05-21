@@ -5,3 +5,7 @@ Inspiration:
  - Talos principle
  - Hourglass
  - Movie called Tenet
+
+
+ Mechanics:
+  - Clone acts as a damage tank
