@@ -12,13 +12,13 @@ public class Button : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnAction()
@@ -26,16 +26,22 @@ public class Button : MonoBehaviour
         // TODO later
     }
 
-    void OnTriggerEnter() {
+    void OnTriggerEnter()
+    {
         isInRange = true;
-        if(isInRange && !isPressed) {
+        if (isInRange && !isPressed)
+        {
             transform.position += pressedOffset;
             isPressed = true;
         }
     }
 
-    void OnTriggerExit() {
-        if(isPressed) {
+
+    // TODO no exit when the clone is disabled while in range
+    void OnTriggerExit()
+    {
+        if (isPressed)
+        {
             transform.position -= pressedOffset;
             isPressed = false;
         }

@@ -65,7 +65,7 @@ public class CharacterPlayback : MonoBehaviour
 
         if (!isMainCharacter || isMainCharacter && config.timeStep < 0)
         {
-            Debug.Log(positions.Count + "count + frame: " + config.currentFrame + " isMain" + isMainCharacter);
+            //Debug.Log(positions.Count + "count + frame: " + config.currentFrame + " isMain" + isMainCharacter);
             transform.position = positions[config.currentFrame];
         }
     }
