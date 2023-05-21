@@ -1,31 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class TimeMachine : MonoBehaviour
 {
     public GameObject pastCharacter;
     Config config;
+    CharacterRecorder recorder;
 
-    void Start() {
+    void Start()
+    {
         config = FindObjectOfType<Config>();
+        recorder = GetComponent<CharacterRecorder>();
     }
 
-    void OnTriggerEnter(Collider other) {
-        Debug.Log("TimeMachine OnTriggerEnter");
-        config.timeStep = -1;
+    public void OnAction(InputValue action)
+    {
+        if (action.isPressed)
+        {
+            config.timeStep = -1;
 
-        CharacterRecorder recorder = other.GetComponent<CharacterRecorder>();
-        if(!recorder) {
-            return;
+            GameObject dupe = Instantiate(pastCharacter);
+            CharacterPlayback playback = dupe.GetComponent<CharacterPlayback>();
+            playback.positions = new List<Vector3>(recorder.positions);
         }
-
-        GameObject dupe = Instantiate(pastCharacter);
-        CharacterPlayback playback = dupe.GetComponent<CharacterPlayback>();
-        playback.positions = new List<Vector3>(recorder.positions);
-    }
-
-    void OnTriggerExit() {
-        config.timeStep = 1;
+        else
+        {
+            config.timeStep = 1;
+        }
     }
 }
