@@ -4,10 +4,24 @@ using UnityEngine;
 
 public class CharacterRecorder : MonoBehaviour
 {
+    Config config;
     public List<Vector3> positions = new List<Vector3>();
 
+    private void Start()
+    {
+        config = FindFirstObjectByType<Config>();
+    }
+
     void FixedUpdate()
-    {   
-        positions.Add(transform.position);
+    {
+        if (config.timeStep > 0)
+        {
+            if (positions.Count > config.currentFrame)
+            {
+                positions.RemoveRange(config.currentFrame, positions.Count - config.currentFrame);
+            }
+
+            positions.Add(transform.position);
+        }
     }
 }

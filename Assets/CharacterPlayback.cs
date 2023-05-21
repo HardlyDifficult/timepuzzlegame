@@ -5,37 +5,68 @@ using UnityEngine;
 public class CharacterPlayback : MonoBehaviour
 {
     public List<Vector3> positions;
-    int index;
-    int oldestIndex = -1;
-    Config config;
 
-    void Start()
+    Config config;
+    CharacterRecorder recorder;
+    public bool isMainCharacter;
+
+    [SerializeField]
+    int minFrame;
+
+    private void OnEnable()
     {
         config = FindObjectOfType<Config>();
+        recorder = FindFirstObjectByType<CharacterRecorder>();
 
-        index = positions.Count - 1;
-        transform.position = positions[index];
+        if (isMainCharacter)
+        {
+            positions = recorder.positions;
+        }
+        else
+        {
+            positions = new List<Vector3>(recorder.positions);
+        }
+
+        minFrame = -1; // unknown
+
+        if (config.currentFrame < positions.Count)
+        {
+            transform.position = positions[config.currentFrame];
+        }
     }
 
     void FixedUpdate()
     {
-        if (oldestIndex == -1 && config.timeStep > 0)
+        if (!isMainCharacter)
         {
-            oldestIndex = index;
+            // Min is the frame when I stop traveling back in time
+            if (minFrame == -1 && config.timeStep > 0)
+            {
+                minFrame = config.currentFrame;
+            }
+
+            if (minFrame == -1 && config.currentFrame <= 0)
+            {
+                minFrame = 0;
+            }
+            if (config.currentFrame >= positions.Count || config.currentFrame < minFrame)
+            {
+                // Out of time-bounds
+
+                GetComponent<Renderer>().enabled = false;
+                GetComponent<Collider>().enabled = false;
+
+                return;
+            }
+
+            GetComponent<Renderer>().enabled = true;
+            GetComponent<Collider>().enabled = true;
         }
 
-        index += config.timeStep;
-
-        if (index >= positions.Count || index < 0 || (oldestIndex >= 0 && index < oldestIndex))
+        if (!isMainCharacter || isMainCharacter && config.timeStep < 0)
         {
-            GetComponent<Renderer>().enabled = false;
-            GetComponent<Collider>().enabled = false;
-            return;
+            Debug.Log(positions.Count + "count + frame: " + config.currentFrame + " isMain" + isMainCharacter);
+            transform.position = positions[config.currentFrame];
         }
-
-        GetComponent<Renderer>().enabled = true;
-        GetComponent<Collider>().enabled = true;
-
-        transform.position = positions[index];
     }
 }

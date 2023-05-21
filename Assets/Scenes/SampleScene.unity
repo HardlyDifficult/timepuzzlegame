@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 21056493}
   - component: {fileID: 21056494}
   - component: {fileID: 21056495}
+  - component: {fileID: 21056496}
   m_Layer: 3
   m_Name: Character
   m_TagString: Untagged
@@ -330,7 +331,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e614be0d9db4426099516b5f566e38a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pastCharacter: {fileID: 4295681013037265690, guid: fee0cb39832844fcab343bfc39cbf63a, type: 3}
+  pastCharacterPrefab: {fileID: 4295681013037265690, guid: fee0cb39832844fcab343bfc39cbf63a, type: 3}
+--- !u!114 &21056496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 21056484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83c24abb425cf455ea30301421609ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positions: []
+  isMainCharacter: 1
+  minFrame: 0
 --- !u!1 &63637365
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,6 +492,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeStep: 1
+  currentFrame: 0
 --- !u!4 &293844632
 Transform:
   m_ObjectHideFlags: 0
