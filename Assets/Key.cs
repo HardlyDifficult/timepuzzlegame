@@ -9,7 +9,7 @@ public class Key : MonoBehaviour
     Vector3 originalPosition;
     Quaternion originalRotation;
 
-    void Start()
+    void Awake()
     {
         config = FindFirstObjectByType<Config>();
         originalPosition = transform.position;
@@ -23,7 +23,8 @@ public class Key : MonoBehaviour
             if (config.currentFrame == framePickup)
             {
                 // Clone back to the original position
-                Instantiate(gameObject, originalPosition, originalRotation);
+                var newKey = Instantiate(gameObject, originalPosition, originalRotation);
+                newKey.GetComponent<Collider>().enabled = true;
 
                 framePickup = -1;
             }
@@ -32,6 +33,12 @@ public class Key : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (config.timeStep < 0)
+        {
+            // No pickup while traveling backwards
+            return;
+        }
+
         transform.SetParent(other.transform);
         GetComponent<Collider>().enabled = false;
         framePickup = config.currentFrame;
