@@ -19,7 +19,7 @@ public class TimeMachine : MonoBehaviour
     {
         if (action.isPressed)
         {
-            config.timeStep = -1;
+            config.timeStep = -2;
 
             GameObject dupe = Instantiate(pastCharacter);
             CharacterPlayback playback = dupe.GetComponent<CharacterPlayback>();

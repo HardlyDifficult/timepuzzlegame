@@ -14,6 +14,7 @@ public class CharacterPlayback : MonoBehaviour
         config = FindObjectOfType<Config>();
 
         index = positions.Count - 1;
+        transform.position = positions[index];
     }
 
     void FixedUpdate()
@@ -28,13 +29,13 @@ public class CharacterPlayback : MonoBehaviour
         if (index >= positions.Count || index < 0 || (oldestIndex >= 0 && index < oldestIndex))
         {
             GetComponent<Renderer>().enabled = false;
+            GetComponent<Collider>().enabled = false;
             return;
         }
 
         GetComponent<Renderer>().enabled = true;
+        GetComponent<Collider>().enabled = true;
 
-        Vector3 position = positions[index];
-        // rb.MovePosition(position);
-        transform.position = position;
+        transform.position = positions[index];
     }
 }
