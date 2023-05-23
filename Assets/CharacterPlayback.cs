@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CharacterPlayback : MonoBehaviour
 {
@@ -58,5 +59,20 @@ public class CharacterPlayback : MonoBehaviour
                 transform.position = positions[config.currentFrame];
             }
         }
+
+        if (config.timeStep > 0)
+        {
+            var isInteract = recorder.frameToInteract.TryGetValue(config.currentFrame, out bool whatever);
+            if (isInteract)
+            {
+                gameObject.SendMessage("OnInteract");
+            }
+        }
+    }
+
+    public void OnInteract()
+    {
+        Debug.Log("Interact");
+        transform.DetachChildren();
     }
 }

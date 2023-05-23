@@ -33,6 +33,16 @@ public class Key : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Touch(other.gameObject);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Touch(collision.gameObject);
+    }
+
+    private void Touch(GameObject other)
+    {
         if (config.timeStep < 0)
         {
             // No pickup while traveling backwards

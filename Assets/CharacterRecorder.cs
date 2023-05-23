@@ -6,6 +6,7 @@ public class CharacterRecorder : MonoBehaviour
 {
     Config config;
     public List<Vector3> positions = new List<Vector3>();
+    public Dictionary<int, bool> frameToInteract = new Dictionary<int, bool>();
 
 
     private void Start()
@@ -28,5 +29,10 @@ public class CharacterRecorder : MonoBehaviour
                 positions.Add(whoToRecord.transform.position);
             }
         }
+    }
+
+    void OnInteract()
+    {
+        frameToInteract.Add(config.currentFrame, true);
     }
 }

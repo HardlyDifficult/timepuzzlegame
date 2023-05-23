@@ -50,4 +50,10 @@ public class Character : MonoBehaviour
         moveDirection = Vector2.zero;
         moveVelocity = Vector2.zero;
     }
+
+    public void OnInteract()
+    {
+        Debug.Log("Interact");
+        transform.DetachChildren();
+    }
 }
