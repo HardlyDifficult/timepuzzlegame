@@ -49,24 +49,14 @@ public class CharacterPlayback : MonoBehaviour
             {
                 minFrame = 0;
             }
-            if (config.currentFrame >= positions.Count || config.currentFrame < minFrame)
-            {
-                // Out of time-bounds
-
-                GetComponent<Renderer>().enabled = false;
-                GetComponent<Collider>().enabled = false;
-
-                return;
-            }
-
-            GetComponent<Renderer>().enabled = true;
-            GetComponent<Collider>().enabled = true;
         }
 
-        if (!isMainCharacter || isMainCharacter && config.timeStep < 0)
+        if (config.currentFrame < positions.Count)
         {
-            //Debug.Log(positions.Count + "count + frame: " + config.currentFrame + " isMain" + isMainCharacter);
-            transform.position = positions[config.currentFrame];
+            if (!isMainCharacter || isMainCharacter && config.timeStep < 0)
+            {
+                transform.position = positions[config.currentFrame];
+            }
         }
     }
 }
