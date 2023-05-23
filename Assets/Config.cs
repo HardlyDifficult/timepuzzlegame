@@ -12,6 +12,8 @@ public class Config : MonoBehaviour
 
     public GameObject characterPrefab;
 
+    public GameObject tombstonePrefab;
+
     private void FixedUpdate()
     {
         currentFrame += timeStep;

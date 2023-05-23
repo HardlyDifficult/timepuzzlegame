@@ -45,6 +45,7 @@ public class TNT : MonoBehaviour
             var character = FindFirstObjectByType<Character>();
             var position = character.transform.position;
             Destroy(character.gameObject);
+            Instantiate(config.tombstonePrefab, position, Quaternion.identity);
             position.y += 4f;
             Instantiate(config.soulPrefab, position, Quaternion.identity);
 

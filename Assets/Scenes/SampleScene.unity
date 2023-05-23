@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 133262223}
   - component: {fileID: 133262227}
   m_Layer: 0
-  m_Name: Lava
+  m_Name: Quicksand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -725,6 +725,7 @@ MonoBehaviour:
   currentFrame: 0
   soulPrefab: {fileID: 7905548485407890649, guid: 0a65073a5513740e1a8eca12a0b94ea3, type: 3}
   characterPrefab: {fileID: 5653684828402068239, guid: 8e00072d8fbaa486bb8b5e36753d7a83, type: 3}
+  tombstonePrefab: {fileID: 3157869819610149181, guid: 62cf06101e8d74d03912fc0289822d20, type: 3}
 --- !u!4 &293844632
 Transform:
   m_ObjectHideFlags: 0
