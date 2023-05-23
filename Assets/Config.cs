@@ -8,6 +8,10 @@ public class Config : MonoBehaviour
 
     public int currentFrame;
 
+    public GameObject soulPrefab;
+
+    public GameObject characterPrefab;
+
     private void FixedUpdate()
     {
         currentFrame += timeStep;

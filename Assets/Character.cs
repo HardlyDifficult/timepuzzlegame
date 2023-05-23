@@ -29,7 +29,6 @@ public class Character : MonoBehaviour
             moveVelocity = Vector2.Lerp(moveVelocity, moveDirection * moveSpeed, acceleration * Time.fixedDeltaTime);
             controller.SimpleMove(new Vector3(moveVelocity.x, 0, moveVelocity.y) * Time.fixedDeltaTime);
 
-
             jump += Physics.gravity.y * Time.fixedDeltaTime;
             controller.Move(new Vector3(0, jump, 0) * Time.fixedDeltaTime);
         }
@@ -42,7 +41,6 @@ public class Character : MonoBehaviour
 
     void OnJump()
     {
-        Debug.Log("Jump");
         jump = jumpForce;
     }
 
