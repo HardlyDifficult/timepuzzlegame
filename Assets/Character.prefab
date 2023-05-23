@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 5653684828402068238}
   - component: {fileID: 5653684828402068226}
   - component: {fileID: 5653684828402068225}
-  - component: {fileID: 5653684828402068231}
   - component: {fileID: 5653684828402068230}
   - component: {fileID: 5653684828402068229}
   - component: {fileID: 5653684828402068228}
@@ -150,19 +149,6 @@ MonoBehaviour:
   m_DefaultActionMap: Move
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &5653684828402068231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5653684828402068239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d43a01a2c1e5c44449254e644ad07723, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positions: []
 --- !u!143 &5653684828402068230
 CharacterController:
   m_ObjectHideFlags: 0

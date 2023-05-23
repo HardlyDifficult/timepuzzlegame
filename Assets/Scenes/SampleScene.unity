@@ -701,6 +701,7 @@ GameObject:
   m_Component:
   - component: {fileID: 293844632}
   - component: {fileID: 293844631}
+  - component: {fileID: 293844633}
   m_Layer: 0
   m_Name: Config
   m_TagString: Untagged
@@ -739,6 +740,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &293844633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293844630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43a01a2c1e5c44449254e644ad07723, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positions: []
 --- !u!1 &339132552
 GameObject:
   m_ObjectHideFlags: 0
@@ -1174,6 +1188,7 @@ GameObject:
   - component: {fileID: 763623656}
   - component: {fileID: 763623655}
   - component: {fileID: 763623654}
+  - component: {fileID: 763623657}
   m_Layer: 0
   m_Name: Wire (1)
   m_TagString: Untagged
@@ -1259,6 +1274,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 763623652}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &763623657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 763623652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee39a2aae21d1407b91d0dc517d277a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

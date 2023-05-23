@@ -7,6 +7,8 @@ public class TNT : MonoBehaviour
     Config config;
     int _connectedWires = 2;
 
+    int explosionFrame;
+
     public int connectedWires
     {
         get
@@ -27,12 +29,16 @@ public class TNT : MonoBehaviour
 
     IEnumerator onWireCut()
     {
+        Debug.Log("Connected wires " + connectedWires);
         yield return new WaitForSeconds(2f);
         // check for defuse or explode
+
+        explosionFrame = config.currentFrame;
 
         if (connectedWires == 0)
         {
             // Defused
+            Destroy(gameObject);
         }
         else
         {
@@ -43,13 +49,15 @@ public class TNT : MonoBehaviour
             Instantiate(config.soulPrefab, position, Quaternion.identity);
 
             // Explode
-            while (true)
+            while (config.currentFrame >= explosionFrame)
             {
                 transform.localScale = Vector3.one * 1.25f;
                 yield return new WaitForSeconds(.1f);
                 transform.localScale = Vector3.one;
                 yield return new WaitForSeconds(.1f);
             }
+            transform.localScale = Vector3.one * 3;
+            _connectedWires = 2;
         }
     }
 }
