@@ -14,6 +14,8 @@ public class Config : MonoBehaviour
 
     public GameObject tombstonePrefab;
 
+    public GameObject explosionPrefab;
+
     private void FixedUpdate()
     {
         currentFrame += timeStep;

@@ -60,6 +60,14 @@ public class Character : MonoBehaviour
     public void OnInteract()
     {
         Debug.Log("Interact");
+        for (var i = 0; i < transform.childCount; i++)
+        {
+            var collider = transform.GetChild(i).GetComponent<Collider>();
+            if (collider != null)
+            {
+                collider.enabled = true;
+            }
+        }
         transform.DetachChildren();
     }
 }

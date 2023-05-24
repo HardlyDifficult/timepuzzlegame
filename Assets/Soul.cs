@@ -24,8 +24,14 @@ public class Soul : MonoBehaviour
             return;
         }
 
+        var newGuy = Instantiate(config.characterPrefab, collision.transform.position, collision.transform.rotation);
+
+        for (int i = 0; i < collision.gameObject.transform.childCount; i++)
+        {
+            var child = collision.gameObject.transform.GetChild(i);
+            child.transform.SetParent(newGuy.transform);
+        }
         Destroy(collision.gameObject);
         Destroy(gameObject);
-        Instantiate(config.characterPrefab, collision.transform.position, collision.transform.rotation);
     }
 }

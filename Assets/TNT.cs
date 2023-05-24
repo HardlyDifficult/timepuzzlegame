@@ -50,6 +50,7 @@ public class TNT : MonoBehaviour
             Instantiate(config.soulPrefab, position, Quaternion.identity);
 
             // Explode
+            Instantiate(config.explosionPrefab, transform.position, transform.rotation);
             while (config.currentFrame >= explosionFrame)
             {
                 transform.localScale = Vector3.one * 1.25f;
