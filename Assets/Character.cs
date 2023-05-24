@@ -22,6 +22,12 @@ public class Character : MonoBehaviour
         controller = GetComponent<CharacterController>();
     }
 
+    private void OnEnable()
+    {
+        var cameraScript = FindAnyObjectByType<ThirdPersonCamera>();
+        cameraScript._followTarget = transform;
+    }
+
     void FixedUpdate()
     {
         if (config.timeStep > 0)

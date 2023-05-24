@@ -11,6 +11,12 @@ public class Soul : MonoBehaviour
         config = FindFirstObjectByType<Config>();
     }
 
+    private void OnEnable()
+    {
+        var cameraScript = FindAnyObjectByType<ThirdPersonCamera>();
+        cameraScript._followTarget = transform;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Clone>() == null)

@@ -220,6 +220,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7409970}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &21056488 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5653684828402068227, guid: 8e00072d8fbaa486bb8b5e36753d7a83, type: 3}
+  m_PrefabInstance: {fileID: 5653684828414599403}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &34722036
 GameObject:
   m_ObjectHideFlags: 0
@@ -1439,6 +1444,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1512,6 +1518,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 46.7, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad3da7a2efc2247c7b0c479680f4b5fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _followTarget: {fileID: 21056488}
+  _followDistance: 50
+  _orbitSpeed: 0.5
+  _verticalLimits: {x: -30, y: 80}
+  _defaultAngle: {x: 30, y: 0}
+  _collisionLayer:
+    serializedVersion: 2
+    m_Bits: 1
+  _collisionResetSpeed: 2
 --- !u!114 &986373872 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4266567637510573790, guid: 04b53077da7b94517a45db057174bd84, type: 3}
