@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.TextCore.Text;
+using UnityEngine.UIElements;
 
 public class Character : MonoBehaviour
 {
@@ -69,5 +71,26 @@ public class Character : MonoBehaviour
             }
         }
         transform.DetachChildren();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if ((0x1 << gameObject.layer & LayerMask.GetMask("Character")) != 0)
+        {
+            if ((0x1 << collision.gameObject.layer & LayerMask.GetMask("Clone")) != 0)
+            {
+                Debug.Log("Stop touching yourself");
+
+                var position = transform.position;
+                Destroy(gameObject);
+                Destroy(collision.gameObject);
+                Instantiate(config.tombstonePrefab, position, Quaternion.identity);
+                position.y += 4f;
+                Instantiate(config.soulPrefab, position, Quaternion.identity);
+
+                // Explode
+                Instantiate(config.explosionPrefab, transform.position, transform.rotation);
+            }
+        }
     }
 }
