@@ -6,8 +6,8 @@ public class CurrentTimeline : MonoBehaviour
 {
     public struct TransformData
     {
-        Vector3 position;
-        Quaternion rotation;
+        public Vector3 position;
+        public Quaternion rotation;
 
         public TransformData(Vector3 position, Quaternion rotation)
         {
