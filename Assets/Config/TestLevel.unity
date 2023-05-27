@@ -288,7 +288,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad3da7a2efc2247c7b0c479680f4b5fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _followTarget: {fileID: 7026525087236199059}
   _followDistance: 5
   _orbitSpeed: 0.5
   _verticalLimits: {x: -30, y: 80}
@@ -401,6 +400,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1551113677}
   - component: {fileID: 1551113676}
+  - component: {fileID: 1551113678}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -435,6 +435,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1551113678
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551113675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d4ea2241951c424d96f46b2d0912ba3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1946700727
 GameObject:
   m_ObjectHideFlags: 0
@@ -704,9 +716,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04d0abb890f084b539c00ea594feaf71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  historicalBoboPrefab: {fileID: 6520231520830136927, guid: 9521597b942074452bf4a2fbf1e89cdd, type: 3}
---- !u!4 &7026525087236199059 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1362703789125448846, guid: 291d7bdd4d2ee4b40bfa914c855a7f10, type: 3}
-  m_PrefabInstance: {fileID: 7026525087236199046}
+  backwardsBobPrefab: {fileID: 7680258872354474114, guid: fdecdc074c6b14c1b9bf636485608909, type: 3}
+--- !u!114 &7026525087236199060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026525087236199047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76e10084cfc14261aff39fab441fa13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

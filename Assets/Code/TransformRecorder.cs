@@ -4,22 +4,15 @@ using UnityEngine;
 
 public class TransformRecorder : MonoBehaviour
 {
-    public struct TransformData
+    CurrentTimeline timeline;
+
+    private void Start()
     {
-        Vector3 position;
-        Quaternion rotation;
-
-        public TransformData(Vector3 position, Quaternion rotation)
-        {
-            this.position = position;
-            this.rotation = rotation;
-        }
+        timeline = FindAnyObjectByType<CurrentTimeline>();
     }
-
-    public List<TransformData> transformData = new List<TransformData>();
 
     void FixedUpdate()
     {
-        transformData.Add(new TransformData(transform.position, transform.rotation));
+        timeline.transformData.Add(new CurrentTimeline.TransformData(transform.position, transform.rotation));
     }
 }

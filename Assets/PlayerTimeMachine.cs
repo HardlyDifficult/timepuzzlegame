@@ -6,11 +6,15 @@ using UnityEngine.InputSystem;
 public class PlayerTimeMachine : MonoBehaviour
 {
     [SerializeField]
-    GameObject historicalBoboPrefab;
+    GameObject backwardsBobPrefab;
 
     void OnRewindTime(InputValue value)
     {
         var isRewinding = value.Get<float>() == 1;
-        Debug.Log(isRewinding);
+        if (isRewinding)
+        {
+            Instantiate(backwardsBobPrefab, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }
     }
 }

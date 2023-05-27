@@ -14,7 +14,7 @@ public class Soul : MonoBehaviour
     private void OnEnable()
     {
         var cameraScript = FindAnyObjectByType<ThirdPersonCamera>();
-        cameraScript._followTarget = transform;
+        //cameraScript._followTarget = transform;
     }
 
     private void OnCollisionEnter(Collision collision)

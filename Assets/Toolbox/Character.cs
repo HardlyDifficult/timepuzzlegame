@@ -27,7 +27,7 @@ public class Character : MonoBehaviour
     private void OnEnable()
     {
         var cameraScript = FindAnyObjectByType<ThirdPersonCamera>();
-        cameraScript._followTarget = transform;
+        //cameraScript._followTarget = transform;
     }
 
     void FixedUpdate()

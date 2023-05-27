@@ -4,7 +4,7 @@ public sealed class ThirdPersonCamera : MonoBehaviour
 {
     #region Data
     [Header("Target Settings")]
-    public Transform _followTarget;
+    Transform _followTarget;
     [SerializeField, Min(0)] float _followDistance = 5f;
 
     [Header("Orbit Settings")]
@@ -33,6 +33,11 @@ public sealed class ThirdPersonCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (_followTarget == null || !_followTarget.gameObject.activeInHierarchy)
+        {
+            _followTarget = FindFirstObjectByType<CameraFollowTarget>().transform;
+        }
+
         Quaternion targetRotation = _followTarget.rotation * Quaternion.Euler(_viewingAngle);
         Vector3 targetPosition = _followTarget.position + targetRotation * new Vector3(0, 0, -_followDistance);
 
