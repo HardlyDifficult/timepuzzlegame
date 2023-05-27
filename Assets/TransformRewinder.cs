@@ -14,10 +14,17 @@ public class TransformRewinder : MonoBehaviour
     public int currentFrame;
     bool shouldResume;
 
-    private void Start()
+    private void Awake()
     {
         timeline = FindFirstObjectByType<CurrentTimeline>();
+        timeline.isForwardTime = false;
         currentFrame = timeline.transformData.Count - 1;
+        Debug.Log(currentFrame + " <- at awake");
+    }
+
+    private void OnDestroy()
+    {
+        timeline.isForwardTime = true;
     }
 
     void OnRewindTime(InputValue value)
@@ -31,21 +38,24 @@ public class TransformRewinder : MonoBehaviour
 
     void FixedUpdate()
     {
-        currentFrame--; // TODO consider faster rewind
-        if (currentFrame < 0)
-        {
-            // TODO: also cap the max we can travel back
-            shouldResume = true;
-        }
-
         if (shouldResume)
         {
             // TODO give it the timeline
             Instantiate(historicalBobPrefab, transform.position, transform.rotation);
-            // TODO fix up the current timeline
+            timeline.transformData.RemoveRange(currentFrame, timeline.transformData.Count - currentFrame);
             Instantiate(playerBobPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
             return;
+        }
+
+        if (currentFrame <= 0)
+        {
+            // Ignore rewind, at start of timeline
+            return;
+        }
+        else
+        {
+            currentFrame--; // TODO consider faster rewind
         }
 
         // Travel backwards through time
