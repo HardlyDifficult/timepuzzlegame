@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Components
     Rigidbody body;
+    PlayerProperties props;
 
     // Data
     Vector3 inputDirection;
@@ -26,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         body = GetComponent<Rigidbody>();
+        props = GetComponent<PlayerProperties>();
     }
 
     void OnMove(InputValue value)
@@ -36,7 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        targetDirection = Vector3.Lerp(targetDirection, transform.rotation * inputDirection, inputDirection == Vector3.zero ? stopAcceleration : goAcceleration);
+        if (props.isGrounded)
+        {
+            targetDirection = Vector3.Lerp(targetDirection, transform.rotation * inputDirection, inputDirection == Vector3.zero ? stopAcceleration : goAcceleration);
+        }
         moveVelocity = (targetDirection - moveVelocity) * speed;
         body.MovePosition(transform.position + moveVelocity);
     }
