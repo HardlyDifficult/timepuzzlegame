@@ -1063,6 +1063,7 @@ GameObject:
   - component: {fileID: 2109859980}
   - component: {fileID: 2109859981}
   - component: {fileID: 2109859982}
+  - component: {fileID: 2109859983}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -1250,5 +1251,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4f9a21941501542ce8323bcee31c1f3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2109859983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2109859972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c70bda2ecb844afaf782a64aefb74e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
