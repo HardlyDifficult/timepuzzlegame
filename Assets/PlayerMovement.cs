@@ -19,9 +19,9 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody body;
 
     // Data
-    Vector2 inputDirection;
-    Vector2 targetDirection;
-    Vector2 moveVelocity;
+    Vector3 inputDirection;
+    Vector3 targetDirection;
+    Vector3 moveVelocity;
 
     private void Start()
     {
@@ -30,13 +30,14 @@ public class PlayerMovement : MonoBehaviour
 
     void OnMove(InputValue value)
     {
-        inputDirection = value.Get<Vector2>();
+        var temp = value.Get<Vector2>();
+        inputDirection = new Vector3(temp.x, 0, temp.y);
     }
 
     private void FixedUpdate()
     {
-        targetDirection = Vector2.Lerp(targetDirection, inputDirection, inputDirection == Vector2.zero ? stopAcceleration : goAcceleration);
+        targetDirection = Vector3.Lerp(targetDirection, transform.rotation * inputDirection, inputDirection == Vector3.zero ? stopAcceleration : goAcceleration);
         moveVelocity = (targetDirection - moveVelocity) * speed;
-        body.MovePosition(transform.position + new Vector3(moveVelocity.x, 0, moveVelocity.y));
+        body.MovePosition(transform.position + moveVelocity);
     }
 }
