@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class TransformRewinder : MonoBehaviour
 {
+    [SerializeField]
+    GameObject playerBobPrefab;
+
     CurrentTimeline timeline;
     int currentFrame;
     bool shouldResume;
@@ -36,7 +39,9 @@ public class TransformRewinder : MonoBehaviour
         if (shouldResume)
         {
             // TODO spawn a historical bob and give it the timeline
-            // TODO - restore playerbob and fix up the current timeline
+            // TODO - fix up the current timeline
+            Instantiate(playerBobPrefab, transform.position, transform.rotation);
+            Destroy(gameObject);
             return;
         }
 
