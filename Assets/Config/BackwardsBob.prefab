@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBobPrefab: {fileID: 1362703789125448834, guid: 291d7bdd4d2ee4b40bfa914c855a7f10, type: 3}
+  historicalBobPrefab: {fileID: 6520231520830136927, guid: 9521597b942074452bf4a2fbf1e89cdd, type: 3}
 --- !u!114 &-4372784521078277475
 MonoBehaviour:
   m_ObjectHideFlags: 0

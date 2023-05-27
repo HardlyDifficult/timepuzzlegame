@@ -13,6 +13,6 @@ public class TransformRecorder : MonoBehaviour
 
     void FixedUpdate()
     {
-        timeline.transformData.Add(new CurrentTimeline.TransformData(transform.position, transform.rotation));
+        timeline.transformData.Add(new TransformData(transform.position, transform.rotation));
     }
 }

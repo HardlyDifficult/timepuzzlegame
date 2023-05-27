@@ -7,9 +7,11 @@ public class TransformRewinder : MonoBehaviour
 {
     [SerializeField]
     GameObject playerBobPrefab;
+    [SerializeField]
+    GameObject historicalBobPrefab;
 
     CurrentTimeline timeline;
-    int currentFrame;
+    public int currentFrame;
     bool shouldResume;
 
     private void Start()
@@ -38,8 +40,9 @@ public class TransformRewinder : MonoBehaviour
 
         if (shouldResume)
         {
-            // TODO spawn a historical bob and give it the timeline
-            // TODO - fix up the current timeline
+            // TODO give it the timeline
+            Instantiate(historicalBobPrefab, transform.position, transform.rotation);
+            // TODO fix up the current timeline
             Instantiate(playerBobPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
             return;
