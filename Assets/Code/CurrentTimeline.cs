@@ -24,6 +24,8 @@ public class CurrentTimeline : MonoBehaviour
     public List<FrameActionData> timelineData = new List<FrameActionData>();
     
     bool _isForwardTime = true;
+
+    public int rewindSpeed = 3;
     
     public bool isForwardTime
     {

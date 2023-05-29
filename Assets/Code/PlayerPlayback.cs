@@ -20,7 +20,7 @@ public class PlayerPlayback : GenericInteractor
 
     void FixedUpdate()
     {
-        currentFrame += timeline.isForwardTime ? 1 : -1;
+        currentFrame += timeline.isForwardTime ? 1 : -timeline.rewindSpeed;
         if (currentFrame >= transformData.Length || currentFrame < 0)
         {
             return;
