@@ -26,36 +26,49 @@ public class TransformRewinder : GenericInteractor
         timeline.isForwardTime = true;
     }
 
-    void OnRewindTime(InputValue value)
-    {
-        var isRewinding = value.Get<float>() == 1;
-        if (!isRewinding)
-        {
-            shouldResume = true;
-        }
-    }
+    // void OnRewindTime(InputValue value)
+    // {
+    //     var isRewinding = value.Get<float>() == 1;
+    //     if (!isRewinding)
+    //     {
+    //         shouldResume = true;
+    //     }
+    // }
 
     void FixedUpdate()
     {
+        if (currentFrame <= 0)
+        {
+            shouldResume = true;
+        }
+
         if (shouldResume)
         {
             // TODO give it the timeline
             Instantiate(historicalBobPrefab, transform.position, transform.rotation);
             timeline.timelineData.RemoveRange(currentFrame, timeline.timelineData.Count - currentFrame);
-            Instantiate(playerBobPrefab, transform.position, transform.rotation);
+
+            // TODO position it in the next pod
+            var timeMachine = FindFirstObjectByType<TimeMachine>();
+            TimeMachinePod nextPod = null;
+            foreach (var pod in timeMachine.pods)
+            {
+                if (!pod.hasTimeline)
+                {
+                    nextPod = pod;
+                    break;
+                }
+            }
+            if(!nextPod) {
+                Debug.LogError("No empty pod found");
+            }
+            nextPod.hasTimeline = true;
+            Instantiate(playerBobPrefab, nextPod.transform.position, nextPod.transform.rotation);
             Destroy(gameObject);
             return;
         }
 
-        if (currentFrame <= 0)
-        {
-            // Ignore rewind, at start of timeline
-            return;
-        }
-        else
-        {
             currentFrame -= timeline.rewindSpeed; // TODO consider faster rewind
-        }
         
         if (currentFrame <= 0)
         {

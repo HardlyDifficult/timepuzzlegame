@@ -4,7 +4,7 @@ public sealed class ThirdPersonCamera : MonoBehaviour
 {
     #region Data
     [Header("Target Settings")]
-    Transform _followTarget;
+    CameraFollowTarget target;
     [SerializeField, Min(0)] float _followDistance = 5f;
 
     [Header("Orbit Settings")]
@@ -33,18 +33,18 @@ public sealed class ThirdPersonCamera : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (_followTarget == null || !_followTarget.gameObject.activeInHierarchy)
+        if (target == null || !target.gameObject.activeInHierarchy)
         {
-            _followTarget = FindFirstObjectByType<CameraFollowTarget>().transform;
+            target = FindFirstObjectByType<CameraFollowTarget>();
         }
 
-        Quaternion targetRotation = _followTarget.rotation * Quaternion.Euler(_viewingAngle);
-        Vector3 targetPosition = _followTarget.position + targetRotation * new Vector3(0, 0, -_followDistance);
+        Quaternion targetRotation = target.shouldRotate ? target.transform.rotation * Quaternion.Euler(_viewingAngle) : transform.rotation;
+        Vector3 targetPosition = target.transform.position + targetRotation * new Vector3(0, 0, -_followDistance);
 
-        float maximumDistance = GetSafeOrbitDistance(_followTarget.position, targetPosition, targetRotation, _followDistance);
+        float maximumDistance = GetSafeOrbitDistance(target.transform.position, targetPosition, targetRotation, _followDistance);
         _viewingDistance = Mathf.Min(_viewingDistance + (_collisionResetSpeed * Time.fixedDeltaTime), maximumDistance);
 
-        transform.SetPositionAndRotation(_followTarget.position + targetRotation * new Vector3(0, 0, -_viewingDistance), targetRotation);
+        transform.SetPositionAndRotation(target.transform.position + targetRotation * new Vector3(0, 0, -_viewingDistance), targetRotation);
     }
     private void LateUpdate()
     {
