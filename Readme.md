@@ -1,3 +1,23 @@
+Problems:
+ - Replaying positions vs input. Think platform that didn't move on the original timeline.
+ - Too easy / messy to create a lot of clones. There needs to be a cost or limit associated with that.
+
+
+TODO:
+ - On rewind, animations should replay in reverse (currently they replay, but forward)
+ - 
+
+
+Mechanics:
+ - Retrieve an item which causes the player to get trapped. Maybe instead of rewind with possetions, you need to move it to a retrievable location before rewinding.
+ - Jump on my dead head (and add the soul effect)
+ - Item duplication (unless we decide rewind without possestions)
+
+
+
+
+
+
 Possible mechanics:
 
 - Self coordination: past self works with current self (e.g. push both buttons at the same time)
