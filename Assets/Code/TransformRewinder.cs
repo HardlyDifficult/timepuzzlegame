@@ -18,7 +18,7 @@ public class TransformRewinder : MonoBehaviour
     {
         timeline = FindFirstObjectByType<CurrentTimeline>();
         timeline.isForwardTime = false;
-        currentFrame = timeline.transformData.Count - 1;
+        currentFrame = timeline.timelineData.Count - 1;
         Debug.Log(currentFrame + " <- at awake");
     }
 
@@ -42,7 +42,7 @@ public class TransformRewinder : MonoBehaviour
         {
             // TODO give it the timeline
             Instantiate(historicalBobPrefab, transform.position, transform.rotation);
-            timeline.transformData.RemoveRange(currentFrame, timeline.transformData.Count - currentFrame);
+            timeline.timelineData.RemoveRange(currentFrame, timeline.timelineData.Count - currentFrame);
             Instantiate(playerBobPrefab, transform.position, transform.rotation);
             Destroy(gameObject);
             return;
@@ -59,7 +59,7 @@ public class TransformRewinder : MonoBehaviour
         }
 
         // Travel backwards through time
-        var frame = timeline.transformData[currentFrame];
+        var frame = timeline.timelineData[currentFrame];
         transform.SetPositionAndRotation(frame.position, frame.rotation);
     }
 }

@@ -3,16 +3,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct TransformData
+public struct FrameActionData
 {
     public Vector3 position;
     public Quaternion rotation;
+    public bool isInteracting;
 
-
-    public TransformData(Vector3 position, Quaternion rotation)
+    public FrameActionData(Vector3 position, Quaternion rotation, bool isInteracting)
     {
         this.position = position;
         this.rotation = rotation;
+        this.isInteracting = isInteracting;
     }
 }
 
@@ -20,8 +21,10 @@ public class CurrentTimeline : MonoBehaviour
 {
     public event Action<bool> onTimeDirectionChange;
 
-    public List<TransformData> transformData = new List<TransformData>();
+    public List<FrameActionData> timelineData = new List<FrameActionData>();
+    
     bool _isForwardTime = true;
+    
     public bool isForwardTime
     {
         get

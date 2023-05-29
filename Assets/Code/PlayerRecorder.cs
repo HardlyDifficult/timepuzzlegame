@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TransformRecorder : MonoBehaviour
+public class PlayerRecorder : MonoBehaviour
 {
     CurrentTimeline timeline;
 
@@ -13,6 +13,7 @@ public class TransformRecorder : MonoBehaviour
 
     void FixedUpdate()
     {
-        timeline.transformData.Add(new TransformData(transform.position, transform.rotation));
+        // TODO
+        timeline.timelineData.Add(new FrameActionData(transform.position, transform.rotation, false));
     }
 }

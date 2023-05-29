@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TransforPlayback : MonoBehaviour
 {
-    public TransformData[] transformData;
+    public FrameActionData[] transformData;
     int currentFrame;
 
     CurrentTimeline timeline;
@@ -13,9 +13,9 @@ public class TransforPlayback : MonoBehaviour
     {
         timeline = FindFirstObjectByType<CurrentTimeline>();
         var rewinder = FindFirstObjectByType<TransformRewinder>();
-        transformData = new TransformData[timeline.transformData.Count - rewinder.currentFrame];
+        transformData = new FrameActionData[timeline.timelineData.Count - rewinder.currentFrame];
         Debug.Log(rewinder.currentFrame);
-        timeline.transformData.CopyTo(rewinder.currentFrame, transformData, 0, transformData.Length);
+        timeline.timelineData.CopyTo(rewinder.currentFrame, transformData, 0, transformData.Length);
     }
 
     void FixedUpdate()
