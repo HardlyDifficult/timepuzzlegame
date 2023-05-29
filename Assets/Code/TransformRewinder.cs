@@ -55,7 +55,14 @@ public class TransformRewinder : GenericInteractor
         }
         else
         {
-            currentFrame-= timeline.rewindSpeed; // TODO consider faster rewind
+            currentFrame -= timeline.rewindSpeed; // TODO consider faster rewind
+        }
+        
+        if (currentFrame <= 0)
+        {
+            currentFrame = 0;
+            // Ignore rewind, at start of timeline
+            return;
         }
 
         // Travel backwards through time
