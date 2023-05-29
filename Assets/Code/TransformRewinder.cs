@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class TransformRewinder : MonoBehaviour
+public class TransformRewinder : GenericInteractor
 {
     [SerializeField]
     GameObject playerBobPrefab;
@@ -61,5 +61,6 @@ public class TransformRewinder : MonoBehaviour
         // Travel backwards through time
         var frame = timeline.timelineData[currentFrame];
         transform.SetPositionAndRotation(frame.position, frame.rotation);
+        OnInteract(frame.isInteracting);
     }
 }

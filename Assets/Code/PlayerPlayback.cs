@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TransforPlayback : MonoBehaviour
+public class PlayerPlayback : GenericInteractor
 {
     public FrameActionData[] transformData;
     int currentFrame;
@@ -28,5 +28,7 @@ public class TransforPlayback : MonoBehaviour
 
         var data = transformData[currentFrame];
         transform.SetPositionAndRotation(data.position, data.rotation);
+
+        OnInteract(data.isInteracting);
     }
 }
