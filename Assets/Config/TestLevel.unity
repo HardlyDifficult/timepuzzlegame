@@ -2061,18 +2061,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerBob
       objectReference: {fileID: 0}
-    - target: {fileID: 1362703789125448845, guid: 291d7bdd4d2ee4b40bfa914c855a7f10, type: 3}
-      propertyPath: m_Drag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1362703789125448845, guid: 291d7bdd4d2ee4b40bfa914c855a7f10, type: 3}
-      propertyPath: m_Mass
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1362703789125448845, guid: 291d7bdd4d2ee4b40bfa914c855a7f10, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1362703789125448846, guid: 291d7bdd4d2ee4b40bfa914c855a7f10, type: 3}
       propertyPath: m_RootOrder
       value: 5
