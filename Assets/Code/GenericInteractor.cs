@@ -15,7 +15,7 @@ public class GenericInteractor : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         triggers.Remove(other.gameObject);
-        other.gameObject.SendMessage("OnStopInteraction");
+        other.gameObject.SendMessage("OnStopInteraction", SendMessageOptions.DontRequireReceiver);
     }
 
     public void OnInteract(bool isInteracting)
@@ -31,11 +31,11 @@ public class GenericInteractor : MonoBehaviour
         if (isInteracting)
         {
             // TODO start/stop (walk away or stop pressing button)
-            trigger.SendMessage("OnStartInteraction");
+            trigger.SendMessage("OnStartInteraction", SendMessageOptions.DontRequireReceiver);
         }
         else
         {
-            trigger.SendMessage("OnStopInteraction");
+            trigger.SendMessage("OnStopInteraction", SendMessageOptions.DontRequireReceiver);
         }
     }
 }

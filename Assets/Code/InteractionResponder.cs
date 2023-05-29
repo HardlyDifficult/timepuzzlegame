@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gate : MonoBehaviour
+public class InteractionResponder : MonoBehaviour
 {
     [SerializeField]
     GameObject[] activatables;
+    [SerializeField]
+    string animationParameter;
 
     Animator animator;
 
@@ -15,15 +17,15 @@ public class Gate : MonoBehaviour
     }
     void FixedUpdate()
     {
-        bool isOpen = true;
+        bool isActive = true;
         foreach(var activatableObject in activatables) {
             var activatable = activatableObject.GetComponent<IActivatable>();
             if(!activatable.isActive) {
-                isOpen = false;
+                isActive = false;
                 break;
             }
         }
 
-        animator.SetBool("opening", isOpen);
+        animator.SetBool(animationParameter, isActive);
     }
 }

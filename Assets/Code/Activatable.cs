@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TwistyNobby : MonoBehaviour, IActivatable
+public class Activatable : MonoBehaviour, IActivatable
 {
     Animator animator;
+
+    [SerializeField]
+    string animationParameter;
 
     bool _isActive = false;
     public bool isActive {
@@ -20,15 +23,13 @@ public class TwistyNobby : MonoBehaviour, IActivatable
 
     void OnStartInteraction()
     {
-        Debug.Log("OnStartInteraction");
         _isActive = true;
-        animator.SetBool("opening", _isActive);
+        animator.SetBool(animationParameter, _isActive);
     }
 
     void OnStopInteraction()
     {
-        Debug.Log("OnStopInteraction");
         _isActive = false;
-        animator.SetBool("opening", _isActive);
+        animator.SetBool(animationParameter, _isActive);
     }
 }

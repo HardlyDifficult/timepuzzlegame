@@ -764,9 +764,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6634472132284749414}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6969518a76f54c24ab205843614506b, type: 3}
+  m_Script: {fileID: 11500000, guid: f4b8f588622886449b8ea649f670979f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animationParameter: opening
 --- !u!135 &6634472132284749418
 SphereCollider:
   m_ObjectHideFlags: 0
