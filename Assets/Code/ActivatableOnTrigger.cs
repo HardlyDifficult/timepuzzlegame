@@ -23,7 +23,6 @@ public class ActivatableOnTrigger : MonoBehaviour, IActivatable
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("OnTriggerEnter");
         _isActive = true;
         animator.SetBool(animationParameter, _isActive);
     }

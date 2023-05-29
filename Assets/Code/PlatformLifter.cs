@@ -33,9 +33,5 @@ public class PlatformLifter : MonoBehaviour
 
         var targetY = startingY + (isActive ? deltaY : 0);
         body.MovePosition(Vector3.MoveTowards(body.position, new Vector3(body.position.x, targetY, body.position.z), speed));
-
-        if(isActive) {
-            Debug.Log("FixedUpdate lifter");
-        }
     }
 }

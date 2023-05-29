@@ -19,7 +19,6 @@ public class TransformRewinder : GenericInteractor
         timeline = FindFirstObjectByType<CurrentTimeline>();
         timeline.isForwardTime = false;
         currentFrame = timeline.timelineData.Count - 1;
-        Debug.Log(currentFrame + " <- at awake");
     }
 
     private void OnDestroy()
