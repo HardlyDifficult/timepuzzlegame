@@ -25,6 +25,12 @@ public class PlayerPlayback : GenericInteractor
         currentFrame += timeline.isForwardTime ? 1 : -timeline.rewindSpeed;
         if (currentFrame >= transformData.Length || currentFrame < 0)
         {
+            if (currentFrame < 0)
+            {
+                currentFrame = 0;
+            }
+            transform.position = timeline.initialPosition;
+            transform.rotation = Quaternion.Euler(timeline.initialRotation);
             return;
         }
 

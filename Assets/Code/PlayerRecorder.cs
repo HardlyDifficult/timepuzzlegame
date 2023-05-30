@@ -47,7 +47,13 @@ public class PlayerRecorder : MonoBehaviour
     void FixedUpdate()
     {
         timeline.timelineData.Add(
-            new FrameActionData(actions.ToArray(), moveDirection, lookDirection)
+            new FrameActionData(
+                actions.ToArray(),
+                moveDirection,
+                lookDirection,
+                transform.position,
+                transform.rotation
+            )
         );
         lookDirection = Vector2.zero;
         actions.Clear();

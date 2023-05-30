@@ -20,7 +20,8 @@ public class PlayerPlaybackRotation : GenericPlayerRotation
 
     void Start()
     {
-        targetRotation = transform.rotation.eulerAngles;
+        transform.rotation = Quaternion.Euler(timeline.initialRotation);
+        targetRotation = timeline.initialRotation;
     }
 
     new public void FixedUpdate()
@@ -33,9 +34,38 @@ public class PlayerPlaybackRotation : GenericPlayerRotation
 
         var data = transformData[currentFrame];
 
-        inputRotation += data.lookDirection.x;
-        inputVerticle += data.lookDirection.y;
+        if (data.lookDirection != Vector2.zero)
+        {
+            Debug.Log("Set look direction: " + data.lookDirection + " at " + currentFrame);
+        }
+
+        inputRotation = data.lookDirection.x;
+        inputVerticle = data.lookDirection.y;
+
+        // if (transform.rotation != data.rotation)
+        // {
+        //     Debug.LogError(
+        //         "Rotation mismatch before update: "
+        //             + transform.rotation.eulerAngles
+        //             + " != "
+        //             + data.rotation.eulerAngles
+        //             + " at "
+        //             + currentFrame
+        //     );
+        // }
 
         base.FixedUpdate();
+
+        if (transform.rotation != data.rotation)
+        {
+            Debug.LogError(
+                "Rotation mismatch after update: "
+                    + transform.rotation.eulerAngles
+                    + " != "
+                    + data.rotation.eulerAngles
+                    + " at "
+                    + currentFrame
+            );
+        }
     }
 }

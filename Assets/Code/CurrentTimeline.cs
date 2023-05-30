@@ -15,11 +15,23 @@ public struct FrameActionData
     public Vector2 lookDirection;
     public Vector2 moveDirection;
 
-    public FrameActionData(ActionType[] actions, Vector2 moveDirection, Vector2 lookDirection)
+    // TODO remove, these are here for debugging only
+    public Vector3 position;
+    public Quaternion rotation;
+
+    public FrameActionData(
+        ActionType[] actions,
+        Vector2 moveDirection,
+        Vector2 lookDirection,
+        Vector3 position,
+        Quaternion rotation
+    )
     {
         this.actions = actions;
         this.moveDirection = moveDirection;
         this.lookDirection = lookDirection;
+        this.position = position;
+        this.rotation = rotation;
     }
 }
 

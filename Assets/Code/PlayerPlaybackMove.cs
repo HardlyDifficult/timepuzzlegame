@@ -28,9 +28,26 @@ public class PlayerPlaybackMove : GenericPlayerMovement
 
         var data = transformData[currentFrame];
 
+        if (data.moveDirection != Vector2.zero)
+        {
+            Debug.Log("Set move direction: " + data.moveDirection + " at " + currentFrame);
+        }
+
         var temp = data.moveDirection;
         inputDirection = new Vector3(temp.x, 0, temp.y);
 
         base.FixedUpdate();
+
+        if (transform.position != data.position)
+        {
+            Debug.LogError(
+                "Position mismatch: "
+                    + transform.position
+                    + " != "
+                    + data.position
+                    + " at "
+                    + currentFrame
+            );
+        }
     }
 }
