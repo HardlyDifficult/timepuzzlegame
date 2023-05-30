@@ -45,14 +45,16 @@ public class TransformRewinder : GenericInteractor
 
         if (shouldResume)
         {
-            // TODO give it the timeline
-            Instantiate(historicalBobPrefab, transform.position, transform.rotation);
+            Instantiate(
+                historicalBobPrefab,
+                timeline.initialPosition,
+                Quaternion.Euler(timeline.initialRotation)
+            );
             timeline.timelineData.RemoveRange(
                 currentFrame,
                 timeline.timelineData.Count - currentFrame
             );
 
-            // TODO position it in the next pod
             var timeMachine = FindFirstObjectByType<TimeMachine>();
             TimeMachinePod nextPod = null;
             foreach (var pod in timeMachine.pods)

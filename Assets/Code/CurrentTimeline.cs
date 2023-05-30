@@ -29,6 +29,10 @@ public class CurrentTimeline : MonoBehaviour
 
     public List<FrameActionData> timelineData = new List<FrameActionData>();
 
+    public Vector3 initialRotation;
+
+    public Vector3 initialPosition;
+
     bool _isForwardTime = true;
 
     public int rewindSpeed = 3;

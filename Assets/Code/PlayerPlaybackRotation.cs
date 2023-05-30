@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerPlaybackMove : GenericPlayerMovement
+public class PlayerPlaybackRotation : GenericPlayerRotation
 {
     public FrameActionData[] transformData;
     int currentFrame;
@@ -18,6 +18,11 @@ public class PlayerPlaybackMove : GenericPlayerMovement
         timeline.timelineData.CopyTo(rewinder.currentFrame, transformData, 0, transformData.Length);
     }
 
+    void Start()
+    {
+        targetRotation = transform.rotation.eulerAngles;
+    }
+
     new public void FixedUpdate()
     {
         currentFrame += timeline.isForwardTime ? 1 : -timeline.rewindSpeed;
@@ -28,8 +33,8 @@ public class PlayerPlaybackMove : GenericPlayerMovement
 
         var data = transformData[currentFrame];
 
-        var temp = data.moveDirection;
-        inputDirection = new Vector3(temp.x, 0, temp.y);
+        inputRotation += data.lookDirection.x;
+        inputVerticle += data.lookDirection.y;
 
         base.FixedUpdate();
     }

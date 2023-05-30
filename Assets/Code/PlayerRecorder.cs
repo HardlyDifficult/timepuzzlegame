@@ -16,6 +16,9 @@ public class PlayerRecorder : MonoBehaviour
     {
         timeline = FindAnyObjectByType<CurrentTimeline>();
         interactor = GetComponent<PlayerInteractor>();
+
+        timeline.initialPosition = transform.position;
+        timeline.initialRotation = transform.rotation.eulerAngles;
     }
 
     void OnFire(InputValue value)

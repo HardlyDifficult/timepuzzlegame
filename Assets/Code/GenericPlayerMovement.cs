@@ -34,8 +34,6 @@ public class GenericPlayerMovement : MonoBehaviour
 
     public void FixedUpdate()
     {
-        Debug.Log(gameObject.name + " " + inputDirection);
-        Debug.Log(gameObject.name + props.isGrounded);
         if (props.isGrounded)
         {
             targetDirection = Vector3.Lerp(

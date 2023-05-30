@@ -81,7 +81,6 @@ MonoBehaviour:
   speed: 0.25
   goAcceleration: 0.023
   stopAcceleration: 0.31
-  jumpForce: 30000
 --- !u!114 &-5127032300952622948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,3 +120,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpForce: 30000
+--- !u!114 &3289686094863731029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6520231520830136927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d668564504671cc48af6487a38a8fc8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRotation: {x: 0, y: 0, z: 0}
+  inputRotation: 0
+  inputVerticle: 0
+  clampY: 10
+  ySpeed: 0.1
