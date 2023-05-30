@@ -3,23 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.UI.Image;
 
-public class PlayerJumper : MonoBehaviour
+public class PlayerJumper : GenericJumper
 {
-    PlayerProperties props;
-    Rigidbody body;
-
-    bool isGrounded;
-
-    [SerializeField]
-    float force;
-
     bool shouldJump;
-
-    void Start()
-    {
-        body = GetComponent<Rigidbody>();
-        props = GetComponent<PlayerProperties>();
-    }
 
     private void OnJump()
     {
@@ -30,10 +16,7 @@ public class PlayerJumper : MonoBehaviour
     {
         if (shouldJump)
         {
-            if (props.isGrounded)
-            {
-                body.AddForce(Vector3.up * force);
-            }
+            Jump();
             shouldJump = false;
         }
     }

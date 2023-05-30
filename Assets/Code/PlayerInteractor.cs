@@ -11,8 +11,9 @@ public class PlayerInteractor : GenericInteractor
     {
         isInteracting = value.Get<float>() == 1;
     }
-    
-    void FixedUpdate() {
-        OnInteract(isInteracting);        
+
+    void FixedUpdate()
+    {
+        OnInteract(isInteracting);
     }
 }

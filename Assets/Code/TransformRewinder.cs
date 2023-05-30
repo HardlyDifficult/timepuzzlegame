@@ -7,6 +7,7 @@ public class TransformRewinder : GenericInteractor
 {
     [SerializeField]
     GameObject playerBobPrefab;
+
     [SerializeField]
     GameObject historicalBobPrefab;
 
@@ -46,7 +47,10 @@ public class TransformRewinder : GenericInteractor
         {
             // TODO give it the timeline
             Instantiate(historicalBobPrefab, transform.position, transform.rotation);
-            timeline.timelineData.RemoveRange(currentFrame, timeline.timelineData.Count - currentFrame);
+            timeline.timelineData.RemoveRange(
+                currentFrame,
+                timeline.timelineData.Count - currentFrame
+            );
 
             // TODO position it in the next pod
             var timeMachine = FindFirstObjectByType<TimeMachine>();
@@ -59,7 +63,8 @@ public class TransformRewinder : GenericInteractor
                     break;
                 }
             }
-            if(!nextPod) {
+            if (!nextPod)
+            {
                 Debug.LogError("No empty pod found");
             }
             nextPod.hasTimeline = true;
@@ -68,8 +73,8 @@ public class TransformRewinder : GenericInteractor
             return;
         }
 
-            currentFrame -= timeline.rewindSpeed; // TODO consider faster rewind
-        
+        currentFrame -= timeline.rewindSpeed; // TODO consider faster rewind
+
         if (currentFrame <= 0)
         {
             currentFrame = 0;
@@ -79,7 +84,9 @@ public class TransformRewinder : GenericInteractor
 
         // Travel backwards through time
         var frame = timeline.timelineData[currentFrame];
-        transform.SetPositionAndRotation(frame.position, frame.rotation);
-        OnInteract(frame.isInteracting);
+
+        // TODO
+        // transform.SetPositionAndRotation(frame.position, frame.rotation);
+        // OnInteract(frame.isInteracting);
     }
 }

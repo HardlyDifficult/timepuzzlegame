@@ -15,7 +15,8 @@ public class PlayerRotation : MonoBehaviour
     [SerializeField]
     float ySpeed = .1f;
 
-    void Start() {
+    void Start()
+    {
         targetRotation = transform.rotation.eulerAngles;
     }
 
@@ -28,9 +29,10 @@ public class PlayerRotation : MonoBehaviour
     private void FixedUpdate()
     {
         targetRotation += new Vector3(inputVerticle * ySpeed, inputRotation, 0);
-        if(Mathf.Abs(targetRotation.x) > clampY) {
+        if (Mathf.Abs(targetRotation.x) > clampY)
+        {
             targetRotation.x = Mathf.Sign(targetRotation.x) * clampY;
-        } 
+        }
         transform.rotation = Quaternion.Euler(targetRotation);
         inputRotation = 0;
         inputVerticle = 0;

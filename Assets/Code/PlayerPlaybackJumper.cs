@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class PlayerPlayback : GenericInteractor
+public class PlayerPlaybackJumper : GenericJumper
 {
     public FrameActionData[] transformData;
     int currentFrame;
@@ -33,6 +33,9 @@ public class PlayerPlayback : GenericInteractor
         // TODO
         // transform.SetPositionAndRotation(data.position, data.rotation);
 
-        OnInteract(data.actions.Contains(ActionType.Fire));
+        if (data.actions.Contains(ActionType.Jump))
+        {
+            Jump();
+        }
     }
 }

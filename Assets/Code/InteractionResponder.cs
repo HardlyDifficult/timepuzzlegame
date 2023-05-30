@@ -6,6 +6,7 @@ public class InteractionResponder : MonoBehaviour
 {
     [SerializeField]
     GameObject[] activatables;
+
     [SerializeField]
     string animationParameter;
 
@@ -15,12 +16,15 @@ public class InteractionResponder : MonoBehaviour
     {
         animator = GetComponentInChildren<Animator>();
     }
+
     void FixedUpdate()
     {
         bool isActive = true;
-        foreach(var activatableObject in activatables) {
+        foreach (var activatableObject in activatables)
+        {
             var activatable = activatableObject.GetComponent<IActivatable>();
-            if(!activatable.isActive) {
+            if (!activatable.isActive)
+            {
                 isActive = false;
                 break;
             }

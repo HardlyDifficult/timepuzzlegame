@@ -10,10 +10,9 @@ public class ActivatableOnTrigger : MonoBehaviour, IActivatable
     string animationParameter;
 
     bool _isActive = false;
-    public bool isActive {
-        get {
-            return _isActive;
-        }
+    public bool isActive
+    {
+        get { return _isActive; }
     }
 
     private void Start()
@@ -31,6 +30,5 @@ public class ActivatableOnTrigger : MonoBehaviour, IActivatable
     {
         _isActive = false;
         animator.SetBool(animationParameter, _isActive);
-    }    
-
+    }
 }

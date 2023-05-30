@@ -10,10 +10,9 @@ public class Activatable : MonoBehaviour, IActivatable
     string animationParameter;
 
     bool _isActive = false;
-    public bool isActive {
-        get {
-            return _isActive;
-        }
+    public bool isActive
+    {
+        get { return _isActive; }
     }
 
     private void Start()

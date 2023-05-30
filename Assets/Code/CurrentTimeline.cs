@@ -3,17 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ActionType
+{
+    Fire,
+    Jump
+}
+
 public struct FrameActionData
 {
-    public Vector3 position;
-    public Quaternion rotation;
-    public bool isInteracting;
+    public ActionType[] actions;
+    public Vector2 lookDirection;
+    public Vector2 moveDirection;
 
-    public FrameActionData(Vector3 position, Quaternion rotation, bool isInteracting)
+    public FrameActionData(ActionType[] actions, Vector2 moveDirection, Vector2 lookDirection)
     {
-        this.position = position;
-        this.rotation = rotation;
-        this.isInteracting = isInteracting;
+        this.actions = actions;
+        this.moveDirection = moveDirection;
+        this.lookDirection = lookDirection;
     }
 }
 
@@ -22,17 +28,14 @@ public class CurrentTimeline : MonoBehaviour
     public event Action<bool> onTimeDirectionChange;
 
     public List<FrameActionData> timelineData = new List<FrameActionData>();
-    
+
     bool _isForwardTime = true;
 
     public int rewindSpeed = 3;
-    
+
     public bool isForwardTime
     {
-        get
-        {
-            return _isForwardTime;
-        }
+        get { return _isForwardTime; }
         set
         {
             _isForwardTime = value;

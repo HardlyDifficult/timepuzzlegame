@@ -2,7 +2,5 @@ using UnityEngine;
 
 public interface IActivatable
 {
-    public bool isActive {
-        get;
-    }
+    public bool isActive { get; }
 }

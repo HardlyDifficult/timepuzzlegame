@@ -8,7 +8,13 @@ public class PlayerProperties : MonoBehaviour
     {
         get
         {
-            return Physics.SphereCast(transform.position, .10f, Vector3.down, out RaycastHit hit, 1);
+            return Physics.SphereCast(
+                transform.position,
+                .10f,
+                Vector3.down,
+                out RaycastHit hit,
+                1
+            );
         }
     }
 }
